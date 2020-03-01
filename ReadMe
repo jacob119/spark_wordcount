@@ -6,3 +6,20 @@ spark-submit --master yarn --class org.jacob.SparkWordCount ./target/spark_wordc
 
 echo " check the number of lines on $output "
 hadoop fs -cat $output/* | wc -l
+
+
+***** spark old version 1.6.x *****
+        //      You can use on  Spark version 1.6.3  as below.
+                JavaRDD<String> words = input.flatMap(
+                       new FlatMapFunction<String, String>() {
+                           public Iterable<String> call(String x) {
+                       return Arrays.asList(x.split(" "));
+                   }});
+*****  spark 2.4.5 or higher *****
+        // Your can use on Spark  2.1.x or higher version as below.
+        JavaRDD<String> words = input.flatMap(
+                new FlatMapFunction<String, String>() {
+                    public Iterator<String> call(String x) {
+                        return Arrays.asList(x.split(" ")).iterator();
+                    }
+                });
