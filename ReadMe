@@ -1,0 +1,17 @@
+$ export HADOOP_CONF_DIR=/opt/hadoop/conf
+
+$ ./bin/spark-submit \
+
+  --master yarn \
+
+  --class job.nclicks.parquet.DeviceLevelStatJob.class
+
+  --name "DeviceLevelStatJob" \
+
+  --queue dev \
+
+  --num-executors 40
+
+  --executor-memory 10g
+
+  myApp.jar
