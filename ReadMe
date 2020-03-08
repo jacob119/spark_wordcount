@@ -6,3 +6,4 @@ spark-submit --master yarn --class org.jacob.SparkWordCount ./target/spark_wordc
 
 echo " check the number of lines on $output "
 hadoop fs -cat $output/* | wc -l
+
